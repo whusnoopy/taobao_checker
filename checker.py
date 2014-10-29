@@ -32,16 +32,13 @@ def get_sib_url(item_url):
     return sib_url
 
 
-def fetch_taobao_price(detail_url, item_url, correct_price, retry_times):
+def fetch_taobao_price(detail_url, item_url, retry_times):
     tmall = False
     if detail_url.find('sib.htm') < 0:
         tmall = True
 
     opener = urllib2.build_opener()
-
-    print ' price  | response header via    | response header _host  '
-    print '--------|------------------------|------------------------'
-
+    fetch_rets = []
     for i in xrange(retry_times):
         request = urllib2.Request(detail_url)
         request.add_header('Referer', item_url)
@@ -61,26 +58,38 @@ def fetch_taobao_price(detail_url, item_url, correct_price, retry_times):
             end_pos = content.find('"', start_pos)
             page_price = content[start_pos:end_pos]
 
-        via = ' NULL'
-        host = ' NULL'
+        via = 'NULL'
+        host = 'NULL'
         headers = response.info().headers
         for header in headers:
-            k, v = header[:-2].split(':', 1)
+            k, v = header[:-2].split(': ', 1)
             if k == 'Via':
                 via = v
             elif k == '_Host':
                 host = v
 
+        fetch_rets.append((page_price, via, host))
+
+    return fetch_rets
+
+
+def output_results(output_rets, correct_price):
+    format_str = '%-8s| %-23s| %-s'
+
+    print format_str % ('price', 'response header via', 'response header _host')
+    print '-'*8 + '+' + '-'*24 + '+' + '-'*24
+
+    for r in output_rets:
         correct = True
-        if pos < 0 or page_price.find(correct_price) != 0:
+        if r[0].find(correct_price) != 0:
             correct = False
 
-        output = '%-7s|%-24s|%s' % (page_price, via, host)
+        output = format_str % r
 
         if correct:
-            print '\033[32m', output, '\033[m'
+            print '\033[32m%s\033[m' % output
         else:
-            print '\033[31m', output, '\033[m'
+            print '\033[31m%s\033[m' % output
 
 
 if __name__ == '__main__':
@@ -94,4 +103,6 @@ if __name__ == '__main__':
     item_url = get_item_url(args.item_id)
     sib_url = get_sib_url(item_url)
 
-    fetch_taobao_price(sib_url, item_url, args.correct_price, args.retry)
+    rets = fetch_taobao_price(sib_url, item_url, args.retry)
+
+    output_results(rets, args.correct_price)
