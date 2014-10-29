@@ -19,7 +19,7 @@ def index():
         sib_url = checker.get_sib_url(item_url)
         results = checker.fetch_taobao_price(sib_url, item_url, retry_times)
 
-    return render_template('checker.html', results=results, correct_price=correct_price)
+    return render_template('checker.html', results=results, input_url=input_url, correct_price=correct_price)
 
 if __name__ == "__main__":
     app.run('0.0.0.0', 9960)

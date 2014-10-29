@@ -12,11 +12,11 @@
       <div class="row">
         <div class="col-xs-8">
           <label for="input_url">宝贝链接</label>
-          <input type="url" class="form-control" id="input_url" name="input_url" placeholder="宝贝链接">
+          <input type="url" class="form-control" id="input_url" name="input_url" placeholder="宝贝链接" value="{{ input_url }}">
         </div>
         <div class="col-xs-2">
           <label for="correct_price">正确价格</label>
-          <input type="number" step="0.01" class="form-control" id="correct_price" name="correct_price" placeholder="正确价格">
+          <input type="number" step="0.01" class="form-control" id="correct_price" name="correct_price" placeholder="正确价格" value="{{ correct_price }}">
         </div>
         <div class="col-xs-1">
           <label for="retry_times">重试次数</label>
@@ -60,6 +60,5 @@
 </div>
 <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
