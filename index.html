@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Taobao Price Checker : A tiny tool to check item price on different host of taobao">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Taobao Price Checker</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/whusnoopy/tb_checker">View on GitHub</a>
+
+          <h1 id="project_title">Taobao Price Checker</h1>
+          <h2 id="project_tagline">A tiny tool to check item price on different host of taobao</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/whusnoopy/tb_checker/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/whusnoopy/tb_checker/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="tb_checker" class="anchor" href="#tb_checker"><span class="octicon octicon-link"></span></a>tb_checker</h1>
+
+<p>A tiny tool to check item price on different host of taobao</p>
+
+<h2>
+<a name="demo" class="anchor" href="#demo"><span class="octicon octicon-link"></span></a>Demo</h2>
+
+<p>There is a demo on my own server: <a href="http://checker.yewen.us">http://checker.yewen.us</a></p>
+
+<h2>
+<a name="usage-under-command-line" class="anchor" href="#usage-under-command-line"><span class="octicon octicon-link"></span></a>Usage under command line</h2>
+
+<pre><code>usage: checker.py [-h] [-r RETRY] item_id correct_price
+
+positional arguments:
+  item_id               num_iid to check
+  correct_price         correct price should be
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -r RETRY, --retry RETRY
+                        retry times
+</code></pre>
+
+<h2>
+<a name="usage-via-web" class="anchor" href="#usage-via-web"><span class="octicon octicon-link"></span></a>Usage via web</h2>
+
+<h3>
+<a name="clone-this-repo" class="anchor" href="#clone-this-repo"><span class="octicon octicon-link"></span></a>Clone this repo</h3>
+
+<div class="highlight highlight-bash"><pre><span class="nv">$ </span>git clone git@github.com:whusnoopy/tb_checker.git
+<span class="nv">$ </span><span class="nb">cd </span>tb_checker
+</pre></div>
+
+<h3>
+<a name="prepare-a-virtual-env" class="anchor" href="#prepare-a-virtual-env"><span class="octicon octicon-link"></span></a>Prepare a virtual env</h3>
+
+<div class="highlight highlight-bash"><pre><span class="nv">$ </span>virtualenv env
+<span class="nv">$ </span><span class="nb">source </span>env/bin/activate
+<span class="nv">$ </span>pip install -r requirement.txt
+</pre></div>
+
+<h3>
+<a name="run-it" class="anchor" href="#run-it"><span class="octicon octicon-link"></span></a>Run it</h3>
+
+<div class="highlight highlight-bash"><pre><span class="nv">$ </span>env/bin/python flask_server.py
+</pre></div>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Taobao Price Checker maintained by <a href="https://github.com/whusnoopy">whusnoopy</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
