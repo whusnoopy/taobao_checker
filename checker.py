@@ -32,7 +32,7 @@ def get_sib_url(item_url):
     return sib_url
 
 
-def fetch_taobao_price(detail_url, item_url, retry_times):
+def fetch_taobao_price(detail_url, item_url, retry_times=16):
     tmall = False
     if detail_url.find('sib.htm') < 0:
         tmall = True

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>淘宝价格检测</title>
+  <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container" style="padding-top:15px">
+  <div class="well">
+    <form class="form" role="form" action="{{ url_for('index') }}">
+      <div class="row">
+        <div class="col-xs-8">
+          <label for="input_url">宝贝链接</label>
+          <input type="url" class="form-control" id="input_url" name="input_url" placeholder="宝贝链接或 num_iid">
+        </div>
+        <div class="col-xs-2">
+          <label for="correct_price">正确价格</label>
+          <input type="number" step="0.01" class="form-control" id="correct_price" name="correct_price" placeholder="正确价格">
+        </div>
+        <div class="col-xs-1">
+          <label for="retry_times">重试次数</label>
+          <input type="number" class="form-control" id="retry_times" name="retry_times" placeholder="重试次数" value="8">
+        </div>
+        <div class="col-xs-1">
+          <button type="submit" class="btn btn-primary">去检查</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="panel panel-info">
+    <div class="panel-heading">检查结果</div>
+  {% if results %}
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>价格</th>
+          <th>缓存服务器</th>
+          <th>后台服务器</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for ret in results %}
+        <tr{%- if correct_price %} class="{%- if ret[0]|float != correct_price|float -%}danger{%- else -%}success{%- endif -%}"{%- endif -%}>
+          <td>{{ ret[0] }}</td>
+          <td>{{ ret[1] }}</td>
+          <td>{{ ret[2] }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <div class="panel-body">
+      <div class="alert alert-warning">没有结果, 或者您还没开始查询</div>
+    </div>
+  {% endif %}
+  </div>
+</div>
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
