@@ -6,13 +6,13 @@ from argparse import ArgumentParser
 
 def get_item_url(url):
     if url.find('?') < 0:
-        return url
-
-    num_iid = 0
-    for para in url.split('?')[1].split('&'):
-        k, v = para.split('=')
-        if k == 'id':
-            num_iid = v
+        num_iid = url
+    else:
+        num_iid = 0
+        for para in url.split('?')[1].split('&'):
+            k, v = para.split('=')
+            if k == 'id':
+                num_iid = v
 
     return 'http://item.taobao.com/item.htm?id=' + num_iid
 
