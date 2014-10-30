@@ -48,9 +48,10 @@ def fetch_taobao_price(detail_url, item_url, retry_times=16):
         content = response.read()
         if tmall:
             promotion_pos = content.find('promotionList')
-            pos = content.find('price', promotion_pos)
+            pos = content.find('price":', promotion_pos)
         else:
-            pos = content.find('price')
+            promotion_pos = content.find('g_config.PromoData=')
+            pos = content.find('price:"', promotion_pos)
         if pos < 0:
             page_price = 'NULL'
         else:
