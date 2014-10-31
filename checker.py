@@ -74,15 +74,15 @@ def fetch_taobao_price(detail_url, item_url, retry_times=16):
     return fetch_rets
 
 
-def output_results(output_rets, correct_price):
+def output_results(output_results, correct_price):
     format_str = '%-8s| %-23s| %-s'
 
     print format_str % ('price', 'response header via', 'response header _host')
-    print '-'*8 + '+' + '-'*24 + '+' + '-'*24
+    print '-'*8 + '+' + '-'*24 + '+' + '-'*32
 
-    for r in output_rets:
+    for r in output_results:
         correct = True
-        if r[0].find(correct_price) != 0:
+        if float(r[0]) != correct_price:
             correct = False
 
         output = format_str % r
@@ -96,7 +96,7 @@ def output_results(output_rets, correct_price):
 if __name__ == '__main__':
     parser = ArgumentParser()
     parser.add_argument('item_id', help="num_iid to check")
-    parser.add_argument('correct_price', help="correct price should be", default=0)
+    parser.add_argument('-c', '--correct_price', help="correct price should be", type=float, default=0, required=False)
     parser.add_argument('-r', '--retry', help="retry times", type=int, default=16, required=False)
 
     args = parser.parse_args()
@@ -104,6 +104,6 @@ if __name__ == '__main__':
     item_url = get_item_url(args.item_id)
     sib_url = get_sib_url(item_url)
 
-    rets = fetch_taobao_price(sib_url, item_url, args.retry)
+    fetch_results = fetch_taobao_price(sib_url, item_url, args.retry)
 
-    output_results(rets, args.correct_price)
+    output_results(fetch_results, args.correct_price)

@@ -11,14 +11,15 @@ There is a demo on my own server: http://checker.yewen.us
 Usage under command line
 -----
 
-    usage: checker.py [-h] [-r RETRY] item_id correct_price
+    usage: checker.py [-h] [-c CORRECT_PRICE] [-r RETRY] item_id
 
     positional arguments:
       item_id               num_iid to check
-      correct_price         correct price should be
 
     optional arguments:
       -h, --help            show this help message and exit
+      -c CORRECT_PRICE, --correct_price CORRECT_PRICE
+                            correct price should be
       -r RETRY, --retry RETRY
                             retry times
 
