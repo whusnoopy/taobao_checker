@@ -12,15 +12,15 @@
       <div class="row">
         <div class="col-xs-8">
           <label for="input_url">宝贝链接</label>
-          <input type="url" class="form-control" id="input_url" name="input_url" placeholder="宝贝链接" value="{{ input_url }}">
+          <input type="url" class="form-control" id="input_url" name="input_url" placeholder="宝贝链接" value="{{ request.values.get('input_url', '') }}">
         </div>
         <div class="col-xs-2">
           <label for="correct_price">正确价格</label>
-          <input type="number" step="0.01" class="form-control" id="correct_price" name="correct_price" placeholder="正确价格" value="{{ correct_price }}">
+          <input type="number" step="0.01" class="form-control" id="correct_price" name="correct_price" placeholder="正确价格" value="{{ request.values.get('correct_price', '') }}">
         </div>
         <div class="col-xs-1">
           <label for="retry_times">重试次数</label>
-          <input type="number" class="form-control" id="retry_times" name="retry_times" placeholder="重试次数" value="8">
+          <input type="number" class="form-control" id="retry_times" name="retry_times" placeholder="重试次数" value="{{ request.values.get('retry_times', '8') }}">
         </div>
         <div class="col-xs-1">
           <label for="submit">x</label>
@@ -33,6 +33,7 @@
   <div class="panel panel-info">
     <div class="panel-heading">检查结果</div>
   {% if results %}
+    {% set correct_price = request.values.get('correct_price', '') %}
     <table class="table table-striped table-hover">
       <thead>
         <tr>
