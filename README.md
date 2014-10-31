@@ -46,3 +46,9 @@ $ pip install -r requirement.txt
 ``` bash
 $ env/bin/python flask_server.py
 ```
+
+or use the `run_flask.sh` script
+
+``` bash
+$ ./run_flask.sh
+```
