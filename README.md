@@ -3,6 +3,8 @@ tb_checker
 
 A tiny tool to check item price on different host of taobao
 
+tb_checker is a free software, you can use, modify or distribute it without restriction, visit http://whusnoopy.github.io/tb_checker/LICENSE.html for more detail
+
 Demo
 ----
 
