@@ -44,7 +44,7 @@ $ source env/bin/activate
 $ pip install -r requirement.txt
 ```
 
-### Run it
+### Run server
 
 ``` bash
 $ env/bin/python flask_server.py
@@ -54,4 +54,16 @@ or use the `run_flask.sh` script
 
 ``` bash
 $ ./run_flask.sh
+```
+
+### Using in your browser
+
+Just open http://localhost:9960 to use this tool
+
+### Stop server
+
+Press `Ctrl` + `C` in terminal if you started server by python, or use `run_flask.sh` script to stop it
+
+``` bash
+$ ./run_flask.sh stop
 ```
