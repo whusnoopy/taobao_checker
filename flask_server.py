@@ -2,7 +2,7 @@
 
 from flask import Flask, request, render_template
 
-import checker
+from actions import checker
 
 app = Flask(__name__)
 
