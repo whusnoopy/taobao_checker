@@ -78,6 +78,11 @@ def fetch_taobao_price(detail_url, item_url, retry_times=16):
 
 
 def output_results(output_results, correct_price):
+    def output_line(line, color=None):
+        if not color:
+            color = 37
+        print '\033[%dm%s\033[m' % (color, line)
+
     format_str = '%-8s| %-23s| %-s'
 
     print format_str % ('price', 'response header via', 'response header _host')
@@ -91,9 +96,9 @@ def output_results(output_results, correct_price):
         output = format_str % (r['promo_price'], r['promo_via'], r['promo_host'])
 
         if correct:
-            print '\033[32m%s\033[m' % output
+            output_line(output, 32)
         else:
-            print '\033[31m%s\033[m' % output
+            output_line(output, 31)
 
 
 if __name__ == '__main__':
