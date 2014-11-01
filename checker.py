@@ -133,16 +133,27 @@ def output_results(output_results, correct_price, output_full=False):
     promo_hr = '-'*12 + '+' + '-'*24 + '+' + '-'*32
     output_line(detail_hr, promo_hr)
 
+    last_price = ''
     for r in output_results:
         correct = True
-        if r['promo_price'] == 'NULL' or float(r['promo_price']) != correct_price:
-            correct = False
+        if correct_price:
+            if r['promo_price'] == 'NULL' or float(r['promo_price']) != correct_price:
+                correct = False
+        else:
+            if last_price:
+                if r['promo_price'] != last_price:
+                    correct = False
+            else:
+                last_price = r['promo_price']
 
         detail_output = detail_format % (r['detail_server'], r['origin_price'], r['detail_via'])
         promo_output = promo_format % (r['promo_price'], r['promo_via'], r['promo_host'])
 
         if correct:
-            output_line(detail_output, promo_output, 32)
+            if correct_price:
+                output_line(detail_output, promo_output, 32)
+            else:
+                output_line(detail_output, promo_output)
         else:
             output_line(detail_output, promo_output, 31)
 
