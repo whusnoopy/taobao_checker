@@ -36,15 +36,23 @@
       <div class="panel-heading">检查结果</div>
       <table class="table table-striped table-hover">
         <thead>
-        <tr>
-          <th>折扣价</th>
-          <th>折扣价缓存服务器</th>
-          <th>折扣价后台服务器</th>
-        </tr>
+          <tr>
+            <th>详情页服务器</th>
+            <th>原价</th>
+            <th>详情页返回缓存</th>
+            <th style="display: none">详情页返回服务器</th>
+            <th>折扣价</th>
+            <th>折扣价缓存服务器</th>
+            <th>折扣价后台服务器</th>
+          </tr>
         </thead>
         <tbody>
         {% for ret in results %}
           <tr{%- if correct_price %} class="{%- if ret.promo_price|float != correct_price|float -%}danger{%- else -%}success{%- endif -%}"{%- endif -%}>
+            <td>{{ ret.detail_server }}</td>
+            <td>{{ ret.origin_price }}</td>
+            <td>{{ ret.detail_via }}</td>
+            <td style="display: none">{{ ret.detail_host }}</td>
             <td>{{ ret.promo_price }}</td>
             <td>{{ ret.promo_via }}</td>
             <td>{{ ret.promo_host }}</td>

@@ -11,17 +11,20 @@ There is a demo on my own server: http://checker.yewen.us
 Usage under command line
 -----
 
-    usage: checker.py [-h] [-c CORRECT_PRICE] [-r RETRY] item_id
+``` bash
+usage: checker.py [-h] [-c CORRECT_PRICE] [-r RETRY] [-f] item_id
 
-    positional arguments:
-      item_id               num_iid to check
+positional arguments:
+  item_id               num_iid to check
 
-    optional arguments:
-      -h, --help            show this help message and exit
-      -c CORRECT_PRICE, --correct_price CORRECT_PRICE
-                            correct price should be
-      -r RETRY, --retry RETRY
-                            retry times
+optional arguments:
+  -h, --help            show this help message and exit
+  -c CORRECT_PRICE, --correct_price CORRECT_PRICE
+                        correct price should be
+  -r RETRY, --retry RETRY
+                        retry times
+  -f, --full            output all columns
+```
 
 Usage via web
 -------------

@@ -15,8 +15,7 @@ def index():
     results = []
     if input_url:
         item_url = checker.get_item_url(input_url)
-        sib_url = checker.get_sib_url(item_url)
-        results = checker.fetch_taobao_price(sib_url, item_url, retry_times)
+        results = checker.fetch_taobao_price(item_url, retry_times)
 
     return render_template('checker.html', results=results)
 
