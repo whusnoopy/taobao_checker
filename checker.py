@@ -38,7 +38,7 @@ def fetch_taobao_price(detail_url, item_url, retry_times=16):
         tmall = True
 
     opener = urllib2.build_opener()
-    fetch_rets = []
+    fetch_results = []
     for i in xrange(retry_times):
         request = urllib2.Request(detail_url)
         request.add_header('Referer', item_url)
@@ -62,19 +62,19 @@ def fetch_taobao_price(detail_url, item_url, retry_times=16):
             end_pos = content.find('"', start_pos)
             page_price = content[start_pos:end_pos]
 
-        via = 'NULL'
-        host = 'NULL'
+        promo_via = 'NULL'
+        promo_host = 'NULL'
         headers = response.info().headers
         for header in headers:
             k, v = header[:-2].split(': ', 1)
             if k == 'Via':
-                via = v
+                promo_via = v
             elif k == '_Host':
-                host = v
+                promo_host = v
 
-        fetch_rets.append((page_price, via, host))
+        fetch_results.append(dict(promo_price=page_price, promo_via=promo_via, promo_host=promo_host))
 
-    return fetch_rets
+    return fetch_results
 
 
 def output_results(output_results, correct_price):
@@ -85,10 +85,10 @@ def output_results(output_results, correct_price):
 
     for r in output_results:
         correct = True
-        if float(r[0]) != correct_price:
+        if float(r['promo_price']) != correct_price:
             correct = False
 
-        output = format_str % r
+        output = format_str % (r['promo_price'], r['promo_via'], r['promo_host'])
 
         if correct:
             print '\033[32m%s\033[m' % output
