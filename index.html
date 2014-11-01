@@ -44,17 +44,19 @@
 <h2>
 <a name="usage-under-command-line" class="anchor" href="#usage-under-command-line"><span class="octicon octicon-link"></span></a>Usage under command line</h2>
 
-<pre><code>usage: checker.py [-h] [-r RETRY] item_id correct_price
+<div class="highlight highlight-bash"><pre>usage: checker.py <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-c CORRECT_PRICE<span class="o">]</span> <span class="o">[</span>-r RETRY<span class="o">]</span> <span class="o">[</span>-f<span class="o">]</span> item_id
 
 positional arguments:
   item_id               num_iid to check
-  correct_price         correct price should be
 
 optional arguments:
-  -h, --help            show this help message and exit
+  -h, --help            show this <span class="nb">help </span>message and <span class="nb">exit</span>
+  -c CORRECT_PRICE, --correct_price CORRECT_PRICE
+                        correct price should be
   -r RETRY, --retry RETRY
-                        retry times
-</code></pre>
+                        retry <span class="nb">times</span>
+  -f, --full            output all columns
+</pre></div>
 
 <h2>
 <a name="usage-via-web" class="anchor" href="#usage-via-web"><span class="octicon octicon-link"></span></a>Usage via web</h2>
@@ -75,9 +77,27 @@ optional arguments:
 </pre></div>
 
 <h3>
-<a name="run-it" class="anchor" href="#run-it"><span class="octicon octicon-link"></span></a>Run it</h3>
+<a name="run-server" class="anchor" href="#run-server"><span class="octicon octicon-link"></span></a>Run server</h3>
 
 <div class="highlight highlight-bash"><pre><span class="nv">$ </span>env/bin/python flask_server.py
+</pre></div>
+
+<p>or use the <code>run_flask.sh</code> script</p>
+
+<div class="highlight highlight-bash"><pre><span class="nv">$ </span>./run_flask.sh
+</pre></div>
+
+<h3>
+<a name="using-in-your-browser" class="anchor" href="#using-in-your-browser"><span class="octicon octicon-link"></span></a>Using in your browser</h3>
+
+<p>Just open http://localhost:9960 to use this tool</p>
+
+<h3>
+<a name="stop-server" class="anchor" href="#stop-server"><span class="octicon octicon-link"></span></a>Stop server</h3>
+
+<p>Press <code>Ctrl</code> + <code>C</code> in terminal if you started server by python, or use <code>run_flask.sh</code> script to stop it</p>
+
+<div class="highlight highlight-bash"><pre><span class="nv">$ </span>./run_flask.sh stop
 </pre></div>
       </section>
     </div>
