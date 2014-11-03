@@ -1,9 +1,9 @@
-tb_checker
+taobao_checker
 ==========
 
 A tiny tool to check item price on different host of taobao
 
-tb_checker is a free software, you can use, modify or distribute it without restriction, visit http://whusnoopy.github.io/tb_checker/LICENSE.html for more detail
+taobao_checker is a free software, you can use, modify or distribute it without restriction, visit http://whusnoopy.github.io/taobao_checker/LICENSE.html for more detail
 
 Demo
 ----
@@ -34,8 +34,8 @@ Usage via web
 ### Clone this repo
 
 ``` bash
-$ git clone git@github.com:whusnoopy/tb_checker.git
-$ cd tb_checker
+$ git clone git@github.com:whusnoopy/taobao_checker.git
+$ cd taobao_checker
 ```
 
 ### Prepare a virtual env
