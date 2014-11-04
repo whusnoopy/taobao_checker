@@ -43,7 +43,7 @@ $ cd taobao_checker
 ``` bash
 $ virtualenv env
 $ source env/bin/activate
-$ pip install -r requirement.txt
+$ pip install -r requirements.txt
 ```
 
 ### Run server
