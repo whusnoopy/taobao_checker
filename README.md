@@ -5,10 +5,15 @@ A tiny tool to check item price on different host of taobao
 
 taobao_checker is a free software, you can use, modify or distribute it without restriction, visit http://whusnoopy.github.io/taobao_checker/LICENSE.html for more detail
 
+WARNING
+-------
+
+As taobao changed their page output, this tool is useless after 2016
+
 Demo
 ----
 
-There is a demo on my own server: http://checker.yewen.us
+~~There is a demo on my own server: http://checker.yewen.us~~
 
 Usage under command line
 -----
